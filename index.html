@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="Content-Language" content="fr">
+        <meta name="Description" content="Il s'agit d'une application de gestion de dates de tournée.">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>DAWN - ADMIN</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+        <!-- CSS -->
+        <link rel="stylesheet" href="style.css">
+
+        <!-- jQuery et Bootstrap-->
+        <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js" defer></script>
+        <script src="https://unpkg.com/bootstrap@4.3.1/dist/js/bootstrap.min.js" defer></script>
+
+        <!-- SDK Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" defer></script>
+        <!-- SDK Firebase authentication -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js" defer></script>
+        <!-- SDK Firebase firestore -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js" defer></script>
+
+        <!-- JS -->
+        <script src="script.js" type="module" defer></script>
+        <!--FONTS-->
+        <link href="http://fonts.cdnfonts.com/css/exo-3" rel="stylesheet">
+	</head>
+
+    <body class="space">
+        <main class="mt-4">
+            <div class="d-flex flex-column col-11">
+                <div id="titre" class="row justify-content-center p-4">
+                    <h1>TOUR</h1>
+                </div>
+                <!--IF USER CONNECTED-->
+                <div id="logged-in">
+                    <div class="row justify-content-end">
+                        <button type="submit" id="logout" class="btn mr-lg-5 mb-3">LOGOUT</button>
+                    </div>
+                    <table class="table text-white">
+                        <thead>
+                          <tr>
+                            <th scope="col">Town, Country</th>
+                            <th scope="col">Event</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Tickets</th>
+                          </tr>
+                        </thead>
+                        <tbody id="contenu">
+                          <!-- Tour dates - datesRef-->
+                        </tbody>
+                    </table>
+
+                    <!-- ADD A LINK -->
+                    <div id="fab" class="row d-flex justify-content-end  mr-lg-4 mb-3">
+                        <button type="button" class="btn addDate rounded-circle" data-toggle="modal" data-target="#tourModal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                            </svg>
+                        </button>
+                    </div>
+        
+                    <div class="modal fade" id="tourModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog d-flex align-items-center h-75" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="add">Add a link</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="addDateForm">
+                                        <label for="dateField">Date :</label>
+                                            <input type="date" id="dateData" class="form-control" required><br>
+                                            <label for="placeField">Place :</label>
+                                            <input type="text" id="placeData" class="form-control" required><br>
+                                            <label for="localityField" class="form-label">Locality :</label>
+                                            <input class="form-control" list="datalistOptions" id="localityData" placeholder="Type to search..." required>
+                                            <datalist id="datalistOptions">
+                                                <option value="San Francisco">
+                                                <option value="New York">
+                                                <option value="Seattle">
+                                                <option value="Los Angeles">
+                                                <option value="Chicago">
+                                            </datalist><br>
+                                            <label for="ticketsField" class="form-label">Tickets:</label>
+                                            <select class="form-control" id="ticketsData" required>
+                                                <option selected>Open this select menu</option>
+                                                <option value="Whole stock">Whole stock</option>
+                                                <option value="Few">Few</option>
+                                                <option value="Sold out">Sold out</option>
+                                            </select>
+                                            <br>
+                                            <br>
+                                            <input type="submit" class="btn btn-primary" value="SUBMIT">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--IF USER DECONNECTED-->
+                <div id="logged-out" class="ml-auto mr-auto mt-5">
+                    <div class="d-flex flex-column text-center">
+                        <form id="loginForm" class="col col-md-6 form">
+                            <h2 class="mb-4 text-center">Login Here</h2>
+                            <div class="form-group">
+                                <label for="emailField">Email</label>
+                                <input type="email" class="form-control" id="emailField" placeholder="Enter email">
+                                <label for="passwordField">Password</label>
+                                <input type="password" class="form-control" id="passwordField" placeholder="Password">
+                                <input type="submit" class="btn btn-primary" value="SUBMIT">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+*{
+    box-sizing: border-box;
+    color: white;
+}
+
+body{
+   
+    min-height: 100vh;
+}
+main > div{
+    margin: auto;
+    min-height: 90vh;
+}
+
+/*BACKGROUND IMAGE : PAG*/
+.space{
+    background-image: url('../img/space.png');
+    background-size: contain;
+}
+
+/*TEXTS*/
+h1,h2,h3,p{
+    font-family: 'Exo 2', sans-serif;
+    font-weight: bold;
+}
+h1{
+    font-size: 3.5em;
+}
+
+/*BUTTONS*/
+#logout,
+.addDate,
+.validate{
+    color: aliceblue;
+    border: 1px solid white;
+}
+#logout:hover,
+.addDate:hover,
+.validate:hover {
+    background-color: #cf925d;
+    cursor: pointer;
+}
+
+/*FORMULAIRE*/
+.form{
+    position: absolute;
+    height: 520px;
+    width: 400px;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    background-color: rgba(255,255,255,0.13);
+    padding: 50px 35px;
+}
+.form  h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+label{
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.form input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.13);
+    padding: 0 10px;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+/*MODAL*/
+#fab .btn {
+    width: 80px;
+    height: 80px;
+}
+.modal-content{
+    background: linear-gradient(to top, #242752, #070b2c,#05081e);
+    border-radius: 20px;
+}
